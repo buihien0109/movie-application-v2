@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    max-width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.image-item.image-selected {
+    border: 3px solid rgb(60, 141, 188) !important;
+}
+
+.EasyMDEContainer .CodeMirror {
+    height: 450px !important;
+}
+
+.EasyMDEContainer .CodeMirror.CodeMirror-fullscreen {
+    height: auto !important;
+}
+
+.login-container {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+        to right,
+        rgb(102, 125, 182),
+        rgb(0, 130, 200),
+        rgb(0, 130, 200),
+        rgb(102, 125, 182)
+    );
+}
+
+.login-container .form-login {
+    width: 350px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#image-container .image-item {
+    width: 100%;
+    height: 190px;
+}
+
+#image-container .image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ck-editor__editable_inline {
+    height: 400px;
+}
