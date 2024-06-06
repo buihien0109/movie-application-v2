@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    restart: always
+    volumes:
+      - ./data.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+
+  spring-app:
+    image: buihien0109/movie-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    restart: always
+    ports:
+      - "8888:8888"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db-movie?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=123
+      - SPRING_APP_ORIGIN=http://103.237.147.34
+      - SPRING_APP_PORT=8888
+      - SPRING_MAIL_USERNAME=thuhangvnua@gmail.com
+      - SPRING_MAIL_PASSWORD=pavm rwzs bzjg kkrr

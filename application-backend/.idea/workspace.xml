@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e67b5afa-612b-433c-bd39-4f8d51d82c3a" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Dockerfile" />
+        <option value="Enum" />
+        <option value="com.haulmont.jpb.JpaRepository" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="com.intellij.jpb.JpaRepository" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;buihien0109&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/buihien0109/movie-application.git&quot;,
+    &quot;accountId&quot;: &quot;89220d4f-1648-4c86-86db-6dff3a753653&quot;
+  }
+}</component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="JsBowerSettings">
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2Xcm5TJI0s1pr6GKyka1mHazIzA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.BlogCrawlerTests.testAllCrawlBlogPost.executor": "Run",
+    "JUnit.CrawlBlogTests.testAllCrawlBlogPost.executor": "Run",
+    "JUnit.CrawlBlogTests.testCrawlBlogPost.executor": "Run",
+    "JUnit.CrawlFilmTests.test_crawlAllFilm.executor": "Run",
+    "JUnit.CrawlFilmTests.test_crawlFilm.executor": "Run",
+    "JUnit.DateTests.rd_country_film.executor": "Run",
+    "JUnit.DateTests.rd_date_blog.executor": "Run",
+    "JUnit.DateTests.rd_date_film.executor": "Run",
+    "JUnit.DateTests.rd_trailer_film.executor": "Run",
+    "JUnit.DateTests.update_info_user.executor": "Run",
+    "JUnit.DateTests.update_phone_user.executor": "Run",
+    "JUnit.DateTests.update_rating_film.executor": "Run",
+    "JUnit.FilmCrawlerTests.test_crawlAllFilm.executor": "Run",
+    "JUnit.MovieAppApplicationTests.get_film_by_id.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_actors.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_blogs.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_countries.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_directors.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_episode.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_films.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_genres.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_order.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_reviews.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_users.executor": "Run",
+    "JUnit.MovieAppApplicationTests.save_videos.executor": "Run",
+    "JUnit.OrderTests.test_revenue.executor": "Run",
+    "JUnit.ReviewCrawlerTests.test_crawlReview.executor": "Run",
+    "JUnit.ReviewCrawlerTests.test_crawlReviewsOfAllFilm.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.MovieAppApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "<unknown>",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/buihien/Documents/own-github/movie-app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "HTML"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/web" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/movieapp" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/admin" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/admin/director" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/web/store" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/web/film" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/web/auth" />
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/web/tin-tuc" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.example.movieapp.response" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MovieAppApplication">
+    <configuration name="DateTests.rd_country_film" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movie-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.movieapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.movieapp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.movieapp.DateTests" />
+      <option name="METHOD_NAME" value="rd_country_film" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DateTests.update_info_user" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movie-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.movieapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.movieapp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.movieapp.DateTests" />
+      <option name="METHOD_NAME" value="update_info_user" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieAppApplicationTests.save_countries" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movie-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.movieapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.movieapp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.movieapp.MovieAppApplicationTests" />
+      <option name="METHOD_NAME" value="save_countries" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieAppApplicationTests.save_episode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movie-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.movieapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.movieapp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.movieapp.MovieAppApplicationTests" />
+      <option name="METHOD_NAME" value="save_episode" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieAppApplicationTests.save_videos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movie-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.movieapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.movieapp" />
+      <option name="MAIN_CLASS_NAME" value="com.example.movieapp.MovieAppApplicationTests" />
+      <option name="METHOD_NAME" value="save_videos" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="movie-app" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.movieapp.MovieAppApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MovieAppApplicationTests.save_videos" />
+        <item itemvalue="JUnit.MovieAppApplicationTests.save_episode" />
+        <item itemvalue="JUnit.MovieAppApplicationTests.save_countries" />
+        <item itemvalue="JUnit.DateTests.update_info_user" />
+        <item itemvalue="JUnit.DateTests.rd_country_film" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e67b5afa-612b-433c-bd39-4f8d51d82c3a" name="Changes" comment="" />
+      <created>1698936561046</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698936561046</updated>
+      <workItem from="1698936562197" duration="1905000" />
+      <workItem from="1698992529229" duration="12000" />
+      <workItem from="1699169068034" duration="8145000" />
+      <workItem from="1702268090891" duration="8372000" />
+      <workItem from="1703560200178" duration="36000" />
+      <workItem from="1703561097680" duration="18412000" />
+      <workItem from="1703733893802" duration="4074000" />
+      <workItem from="1703924608199" duration="2101000" />
+      <workItem from="1704006566867" duration="79012000" />
+      <workItem from="1704364525862" duration="35000" />
+      <workItem from="1704364587744" duration="3633000" />
+      <workItem from="1704516321474" duration="55112000" />
+      <workItem from="1704763096949" duration="22625000" />
+      <workItem from="1704814873508" duration="14495000" />
+      <workItem from="1706065290068" duration="21201000" />
+      <workItem from="1706241860745" duration="1457000" />
+      <workItem from="1706245354985" duration="64000" />
+      <workItem from="1706245447815" duration="2515000" />
+      <workItem from="1706345438389" duration="6823000" />
+      <workItem from="1706369089978" duration="68402000" />
+      <workItem from="1706626510839" duration="1919000" />
+      <workItem from="1706677487488" duration="35463000" />
+      <workItem from="1706799554484" duration="58736000" />
+      <workItem from="1708927728303" duration="2279000" />
+      <workItem from="1708932285506" duration="731000" />
+      <workItem from="1708947041309" duration="15000" />
+      <workItem from="1709451728072" duration="640000" />
+      <workItem from="1710329373863" duration="2278000" />
+      <workItem from="1715655564964" duration="3075000" />
+      <workItem from="1716290612960" duration="1239000" />
+      <workItem from="1716476862158" duration="4298000" />
+      <workItem from="1716523338017" duration="2621000" />
+      <workItem from="1716562841846" duration="17544000" />
+      <workItem from="1716793805249" duration="8995000" />
+      <workItem from="1716821627567" duration="12225000" />
+      <workItem from="1716907911821" duration="8415000" />
+      <workItem from="1717051176920" duration="2314000" />
+      <workItem from="1717385086139" duration="1509000" />
+      <workItem from="1717469631120" duration="9039000" />
+      <workItem from="1717513182611" duration="15673000" />
+      <workItem from="1717598662675" duration="11044000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
