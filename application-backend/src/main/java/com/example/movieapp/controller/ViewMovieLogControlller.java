@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/view-movie-logs")
+@RequestMapping("/api/public/view-movie-logs")
 @RequiredArgsConstructor
 public class ViewMovieLogControlller {
     private final ViewMovieLogService viewMovieLogService;

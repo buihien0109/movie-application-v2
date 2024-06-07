@@ -1,5 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import logoFacebook from "../../../public/facebook.png";
+import logo from "../../../public/logo.png";
+import logoTwitter from "../../../public/twitter.png";
+import logoYoutube from "../../../public/youtube.png";
 
 function Footer() {
     return (
@@ -8,7 +12,7 @@ function Footer() {
                 <div className="row">
                     <div className="col-4">
                         <Link to={"/"}>
-                            <img src="/public/logo.png" alt="logo" className="logo" />
+                            <img src={logo} alt="logo" className="logo" />
                         </Link>
                         <p className="mt-2 text-small">Motchill - Xem phim Online Vietsub chất lượng cao miễn phí, nhiều thể loại phim
                             phong phú, đặc sắc, giao diện trực quan, thuận tiện, tốc độ tải nhanh, thường xuyên cập nhật các
@@ -43,17 +47,17 @@ function Footer() {
                         <div className="d-flex">
                             <p className="fs-4 me-3">
                                 <Link to={"#"}>
-                                    <img src="/public/facebook.png" alt="logo" className="logo-social" />
+                                    <img src={logoFacebook} alt="Logo Facebook" className="logo-social" />
                                 </Link>
                             </p>
                             <p className="fs-4 me-3">
                                 <Link to={"#"}>
-                                    <img src="/public/twitter.png" alt="logo" className="logo-social" />
+                                    <img src={logoTwitter} alt="Logo Twitter" className="logo-social" />
                                 </Link>
                             </p>
                             <p className="fs-4 me-3">
                                 <Link to={"#"}>
-                                    <img src="/public/youtube.png" alt="logo" className="logo-social" />
+                                    <img src={logoYoutube} alt="Logo Youtube" className="logo-social" />
                                 </Link>
                             </p>
                         </div>

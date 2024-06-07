@@ -20,8 +20,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EpisodeService {
     private final EpisodeRepository episodeRepository;
-    private final VideoService videoService;
     private final MovieRepository movieRepository;
+    private final VideoService videoService;
+    private final HistoryService historyService;
 
     public EpisodeDto getEpisodeByDisplayOrder(Integer movieId, Boolean status, String tap) {
         if (tap == null) {
@@ -72,12 +73,17 @@ public class EpisodeService {
     public void deleteEpisode(Integer id) {
         Episode existingEpisode = episodeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy tập phim có id = " + id));
-        episodeRepository.deleteById(id);
 
         // Delete video
         if (existingEpisode.getVideo() != null) {
             videoService.deleteVideo(existingEpisode.getVideo().getId());
         }
+
+        // Delete history
+        historyService.deleteHistoryByEpisodeId(id);
+
+        // Delete episode
+        episodeRepository.deleteById(id);
     }
 
     @Transactional

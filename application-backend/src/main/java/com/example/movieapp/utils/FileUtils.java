@@ -27,12 +27,16 @@ public class FileUtils {
         Path rootPath = Paths.get(uploadDir);
         Path filePath = rootPath.resolve(fileName);
 
-        try {
-            Files.delete(filePath);
-        } catch (IOException e) {
-            log.error("Không thể xóa file: {}", fileName);
-            log.error(e.getMessage());
-            throw new RuntimeException("Could not delete file: " + fileName);
+        if (!Files.exists(filePath)) {
+            log.error("Không tìm thấy file: {}", fileName);
+        } else {
+            try {
+                Files.delete(filePath);
+            } catch (IOException e) {
+                log.error("Không thể xóa file: {}", fileName);
+                log.error(e.getMessage());
+                throw new RuntimeException("Could not delete file: " + fileName);
+            }
         }
     }
 

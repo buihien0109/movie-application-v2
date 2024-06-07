@@ -424,9 +424,9 @@ function PurchaseMovieDetails() {
                                     </div>
                                     {!isAuthenticated && (
                                         <p th:if="not ${isLogined}">
-                                            Vui lòng
+                                            Vui lòng&nbsp;
                                             <a href="/dang-nhap" className="text-primary text-decoration-underline">đăng nhập</a>
-                                            để viết bình luận</p>
+                                            &nbsp;để viết bình luận</p>
                                     )}
                                     <div className="review-list">
                                         {reviewData.totalElements == 0 && (

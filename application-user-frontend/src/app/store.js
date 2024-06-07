@@ -11,6 +11,7 @@ import { orderApi } from "./apis/order.api";
 import { purchaseApi } from "./apis/purchase.api";
 import { reviewApi } from "./apis/review.api";
 import { userApi } from "./apis/user.api";
+import { viewLogsApi } from "./apis/viewLogs.api";
 import authReducer from "./slices/auth.slice";
 import countryReducer from "./slices/country.slice";
 import genreReducer from "./slices/genre.slice";
@@ -29,6 +30,7 @@ const store = configureStore({
         [userApi.reducerPath]: userApi.reducer,
         [reviewApi.reducerPath]: reviewApi.reducer,
         [episodeApi.reducerPath]: episodeApi.reducer,
+        [viewLogsApi.reducerPath]: viewLogsApi.reducer,
         auth: authReducer,
         countries: countryReducer,
         genres: genreReducer
@@ -46,7 +48,8 @@ const store = configureStore({
             historyApi.middleware,
             userApi.middleware,
             reviewApi.middleware,
-            episodeApi.middleware
+            episodeApi.middleware,
+            viewLogsApi.middleware
         ),
 });
 

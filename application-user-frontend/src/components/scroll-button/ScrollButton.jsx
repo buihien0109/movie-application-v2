@@ -5,7 +5,7 @@ function ScrollButton() {
     const { visible, scrollToTop } = useScroll();
     return (
         <button
-            className="!fixed bottom-5 right-5 hidden rounded-full bg-pink-600 p-3 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-pink-700 hover:shadow-lg focus:bg-pink-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-pink-800 active:shadow-lg"
+            className="btn-scroll-top"
             onClick={scrollToTop}
             style={{ display: visible ? "inline" : "none" }}
         >
@@ -13,7 +13,7 @@ function ScrollButton() {
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fas"
-                className="h-4 w-4"
+                className="btn-scroll-icon"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512">

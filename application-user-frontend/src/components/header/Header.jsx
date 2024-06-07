@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import logo from "../../../public/logo.png";
 import { logout } from '../../app/slices/auth.slice';
 
 function Header() {
@@ -19,7 +20,7 @@ function Header() {
             <nav className="navbar navbar-expand-lg">
                 <div className="container">
                     <Link to={"/"} className="navbar-brand">
-                        <img src="/public/logo.png" alt="logo" className="logo" />
+                        <img src={logo} alt="logo" className="logo" />
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#main-menu" aria-controls="main-menu" aria-expanded="false"

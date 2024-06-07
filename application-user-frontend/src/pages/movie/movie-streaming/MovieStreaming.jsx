@@ -411,9 +411,9 @@ function MovieStreaming() {
             </div>
             {!isAuthenticated && (
               <p th:if="not ${isLogined}">
-                Vui lòng
-                <a href="/dang-nhap" className="text-primary text-decoration-underline"> đăng nhập </a>
-                để viết bình luận</p>
+                Vui lòng&nbsp;
+                <a href="/dang-nhap" className="text-primary text-decoration-underline">đăng nhập</a>
+                &nbsp;để viết bình luận</p>
             )}
             <div className="review-list">
               {reviewData.totalElements == 0 && (

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Image, Modal, Row } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import { useCreateOrderMutation } from '../../../../app/apis/order.api';
 import { formatCurrency } from '../../../../utils/functionUtils';
-import { toast } from 'react-toastify';
 
 const PurchaseModal = ({ show, handleClose, movie }) => {
     const [showBankTransferInfo, setShowBankTransferInfo] = useState(true)
@@ -10,6 +10,16 @@ const PurchaseModal = ({ show, handleClose, movie }) => {
     const [createOrder, { isLoading }] = useCreateOrderMutation();
 
     const handleSubmitOrder = () => {
+        if (!paymentMethod) {
+            toast.error("Vui lòng chọn hình thức thanh toán")
+            return
+        }
+
+        if (paymentMethod === "MOMO" || paymentMethod === "ZALO_PAY") {
+            toast.warn("Chức năng thanh toán này đang được phát triển")
+            return
+        }
+
         createOrder({ movieId: movie.id, paymentMethod })
             .unwrap()
             .then((res) => {

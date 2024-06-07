@@ -1,10 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useAddHistoryMovieMutation, useGetHistoryMovieQuery } from '../../../../app/apis/history.api';
+import { useCreateViewMovieLogMutation } from '../../../../app/apis/viewLogs.api';
 
 const VideoPlayer = ({ movie, currentEpisode, isAuthenticated }) => {
     const videoRef = useRef(null);
     const currentEpisodeRef = useRef(currentEpisode);
     const [videoTime, setVideoTime] = useState(0);
+    const [createViewMovieLog] = useCreateViewMovieLogMutation();
+    const [requestSent, setRequestSent] = useState(false);
+    const [isReset, setIsReset] = useState(false);
     const { data: watchHistory } = useGetHistoryMovieQuery({
         movieId: movie.id,
         episodeId: currentEpisode.id
@@ -112,6 +116,50 @@ const VideoPlayer = ({ movie, currentEpisode, isAuthenticated }) => {
             videoRef.current.currentTime = videoTime;
         }
     }, [videoTime]);
+
+    useEffect(() => {
+        const videoElement = videoRef.current;
+        let startTime = 0;
+        let endTime = 0;
+
+        const handleTimeUpdate = () => {
+            endTime = videoElement.currentTime;
+            if (!isReset) {
+                startTime = endTime;
+                setIsReset(true);
+            }
+
+            const durationWatched = endTime - startTime;
+            const completionPercentage = (durationWatched / currentEpisode.duration) * 100;
+            if (!requestSent && completionPercentage >= 50) {
+                createViewMovieLog(movie.id);
+                setRequestSent(true);
+            }
+        };
+
+        const handlePlay = () => {
+            startTime = videoElement.currentTime;
+        };
+
+        const handleEnded = () => {
+            const durationWatched = endTime - startTime;
+            const completionPercentage = (durationWatched / currentEpisode.duration) * 100;
+            if (!requestSent && completionPercentage >= 50) {
+                createViewMovieLog(movie.id);
+                setRequestSent(true);
+            }
+        };
+
+        videoElement.addEventListener('timeupdate', handleTimeUpdate);
+        videoElement.addEventListener('play', handlePlay);
+        videoElement.addEventListener('ended', handleEnded);
+
+        return () => {
+            videoElement.removeEventListener('timeupdate', handleTimeUpdate);
+            videoElement.removeEventListener('play', handlePlay);
+            videoElement.removeEventListener('ended', handleEnded);
+        };
+    }, [requestSent, isReset, createViewMovieLog, currentEpisode.duration, movie.id]);
 
     return (
         <div>

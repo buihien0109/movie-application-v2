@@ -104,7 +104,6 @@ public class HistoryService {
 
     @Transactional
     public void deleteAllHistoryMovie() {
-        // Lấy thông tin user từ context
         User user = SecurityUtils.getCurrentUserLogin();
 
         // Xóa tất cả lịch sử xem phim của user hiện tại
@@ -112,7 +111,6 @@ public class HistoryService {
     }
 
     public HistoryDto getHistoryMovie(Integer movieId, Integer episodeId) {
-        // Lấy thông tin user từ context
         User user = SecurityUtils.getCurrentUserLogin();
 
         if (user == null) {
@@ -121,5 +119,9 @@ public class HistoryService {
 
         return historyRepository.findByUser_IdAndMovie_IdAndEpisode_Id(user.getId(), movieId, episodeId)
                 .orElse(null);
+    }
+
+    public void deleteHistoryByEpisodeId(Integer id) {
+        historyRepository.deleteAllByEpisode_Id(id);
     }
 }

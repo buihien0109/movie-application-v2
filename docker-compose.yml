@@ -1,0 +1,70 @@
+version: "3.8"
+
+services:
+  frontend-user-side:
+    image: buihien0109/movie-app-user-side:latest
+    ports:
+      - "8888:80"
+    depends_on:
+      - backend-side
+      - frontend-admin-side
+    networks:
+      - app-movie-network
+
+  frontend-admin-side:
+    image: buihien0109/movie-app-admin-side:latest
+    depends_on:
+      - backend-side
+    networks:
+      - app-movie-network
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    volumes:
+      - ./data.sql:/docker-entrypoint-initdb.d/init.sql
+      - data_movie:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    networks:
+      - app-movie-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "88:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: 123
+    networks:
+      - app-movie-network
+
+  backend-side:
+    image: buihien0109/movie-app-backend-side:latest
+    ports:
+      - "888:8080"
+    depends_on:
+      - mysql
+    restart: always
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_APP_BACKEND_HOST=http://103.237.144.171
+      - SPRING_APP_BACKEND_PORT=8080
+      - SPRING_APP_BACKEND_EXPOSE_PORT=888
+      - SPRING_APP_FRONTEND_HOST=http://103.237.144.171
+      - SPRING_APP_FRONTEND_PORT=8888
+      - SPRING_APP_VNP_IP_ADDRESS=103.237.144.171
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/db-movie?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=123
+      - SPRING_MAIL_USERNAME=thuhangvnua@gmail.com
+      - SPRING_MAIL_PASSWORD=pavm rwzs bzjg kkrr
+    networks:
+      - app-movie-network
+
+volumes:
+  data_movie:
+
+networks:
+  app-movie-network:
+    driver: bridge

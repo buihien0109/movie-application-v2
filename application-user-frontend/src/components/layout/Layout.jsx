@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import Footer from '../footer/Footer'
 import Header from '../header/Header'
+import ScrollButton from '../scroll-button/ScrollButton'
 
 function Layout() {
     return (
@@ -16,7 +17,7 @@ function Layout() {
                 hideProgressBar={true}
                 theme="light"
             />
-            {/* <ScrollButton /> */}
+            <ScrollButton />
             <Footer />
         </>
     )

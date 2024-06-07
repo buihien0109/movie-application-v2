@@ -20,4 +20,6 @@ public interface HistoryRepository extends JpaRepository<History, Integer> {
     Optional<History> findByUser_IdAndMovie_Id(Integer userId, Integer movieId);
 
     void deleteAllByUser_Id(Integer id);
+
+    void deleteAllByEpisode_Id(Integer id);
 }
