@@ -256,10 +256,12 @@ function MovieStreaming() {
             <div className="col-9">
               <div className="d-flex align-items-center mb-3">
                 <h4 className="mb-0">{movie.title}</h4>
-                <div className="d-flex align-items-center bg-body-tertiary p-1 rounded ms-2">
-                  <span className="fw-bold me-1">{movie.rating}</span>
-                  <span className="rating-icon text-yellow-300"><i className="fa-solid fa-star"></i></span>
-                </div>
+                {movie.rating && (
+                  <div className="d-flex align-items-center bg-body-tertiary p-1 rounded ms-2">
+                    <span className="fw-bold me-1">{movie.rating}</span>
+                    <span className="rating-icon text-yellow-300"><i className="fa-solid fa-star"></i></span>
+                  </div>
+                )}
               </div>
               <div className="p-3 bg-body-tertiary">
                 <div className="row">
@@ -320,9 +322,8 @@ function MovieStreaming() {
                   </div>
                   <div className="col-10">
                     <p>
-                      {movie.description}
-                      <a className="text-primary" href="">Xem
-                        thêm</a></p>
+                      {movie.description}&nbsp;
+                      <span className="text-primary">Xem thêm</span></p>
                   </div>
                 </div>
               </div>
@@ -335,7 +336,7 @@ function MovieStreaming() {
                           className="d-inline-block btn bg-dark px-5 py-2 mt-3 rounded text-white"
                           onClick={() => handleDeleteFromFavorite(movie.id)}
                         >
-                          <span><i className="fa-solid fa-trash-can"></i></span> Loại khỏi yêu thích
+                          <span className="me-1"><i className="fa-solid fa-trash-can"></i></span>Loại khỏi yêu thích
                         </button>
                       )}
                       {isAuthenticated && !isFavorite && (
@@ -343,7 +344,7 @@ function MovieStreaming() {
                           className="d-inline-block btn bg-dark px-5 py-2 mt-3 rounded text-white"
                           onClick={() => handleAddToFavorite(movie.id)}
                         >
-                          <span><i className="fa-solid fa-heart"></i></span> Thêm vào yêu thích
+                          <span className="me-1"><i className="fa-solid fa-heart"></i></span>Thêm vào yêu thích
                         </button>
                       )}
                     </div>
@@ -432,7 +433,7 @@ function MovieStreaming() {
                     </div>
                     <div className="rating-star">
                       <p className="mb-0 fw-medium">
-                        <span className="rating-icon"><i className="fa fa-star"></i></span>
+                        <span className="rating-icon me-1"><i className="fa fa-star"></i></span>
                         <span>{review.rating}/10 {parseReviewMessage(review.rating)}</span>
                       </p>
                     </div>

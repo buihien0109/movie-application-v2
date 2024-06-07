@@ -7,22 +7,27 @@ import com.example.movieapp.exception.BadRequestException;
 import com.example.movieapp.exception.ResourceNotFoundException;
 import com.example.movieapp.model.dto.OrderDto;
 import com.example.movieapp.model.enums.MovieAccessType;
+import com.example.movieapp.model.enums.OrderPaymentMethod;
 import com.example.movieapp.model.enums.OrderStatus;
 import com.example.movieapp.model.request.AdminCreateOrderRequest;
 import com.example.movieapp.model.request.CreateOrderRequest;
 import com.example.movieapp.model.request.UpdateOrderRequest;
+import com.example.movieapp.model.response.ImageResponse;
+import com.example.movieapp.model.response.PaymentResponse;
 import com.example.movieapp.repository.MovieRepository;
 import com.example.movieapp.repository.OrderRepository;
 import com.example.movieapp.repository.UserRepository;
 import com.example.movieapp.security.SecurityUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @Slf4j
 @Service
@@ -32,6 +37,19 @@ public class OrderService {
     private final MovieRepository movieRepository;
     private final UserRepository userRepository;
     private final MailService mailService;
+    private final VNPayService vnpayService;
+
+    @Value("${app.backend.host}")
+    private String backendHost;
+
+    @Value("${app.backend.expose_port}")
+    private String backendExposePort;
+
+    @Value("${app.frontend.host}")
+    private String frontendHost;
+
+    @Value("${app.frontend.port}")
+    private String frontendPort;
 
     public List<OrderDto> getOrdersByCurrentUser() {
         User user = SecurityUtils.getCurrentUserLogin();
@@ -51,7 +69,9 @@ public class OrderService {
         return orderRepository.findAll(Sort.by("createdAt").descending());
     }
 
-    public Order createOrderByCustomer(CreateOrderRequest request) {
+    public PaymentResponse createOrderByCustomer(CreateOrderRequest request) {
+        log.info("Creating order with request: {}", request);
+
         // Kiểm tra xem phim có tồn tại hay không
         Movie movie = movieRepository.findByIdAndAccessType(request.getMovieId(), MovieAccessType.PAID)
                 .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy phim"));
@@ -64,25 +84,56 @@ public class OrderService {
 
         // Tạo mới order
         Order order = Order.builder()
+                .id(generateOrderId())
                 .user(user)
                 .movie(movie)
                 .amount(movie.getPrice())
                 .status(OrderStatus.PENDING)
                 .paymentMethod(request.getPaymentMethod())
                 .build();
+        Order savedOrder = orderRepository.save(order);
 
-        // Lưu vào database
-        orderRepository.save(order);
+        if(order.getPaymentMethod().equals(OrderPaymentMethod.BANK_TRANSFER)) {
+            String returnUrl = "%s:%s/xac-nhan-don-hang/%s".formatted(frontendHost, frontendPort, savedOrder.getId());
 
-        // Gửi mail xác nhận đặt hàng
+             // Gửi mail xác nhận đặt hàng
+             sendMailConfirmOrder(user, savedOrder);
+
+            return PaymentResponse.builder()
+                    .url(returnUrl)
+                    .build();
+        } else if (order.getPaymentMethod().equals(OrderPaymentMethod.VN_PAY)) {
+            String returnUrl = "%s:%s/api/orders/vnpay-payment".formatted(backendHost, backendExposePort);
+            log.info("Return URL: {}", returnUrl);
+            log.info("Order ID: {}", savedOrder.getId());
+            log.info("Start creating order with VNPay...");
+            String paymentUrl = vnpayService.createOrder(
+                    savedOrder.getAmount(),
+                    String.valueOf(savedOrder.getId()),
+                    returnUrl
+            );
+            log.info("Payment URL: {}", paymentUrl);
+            return PaymentResponse.builder()
+                    .url(paymentUrl)
+                    .build();
+        }
+
+        return null;
+    }
+
+    private void sendMailConfirmOrder(User user, Order order) {
         Map<String, Object> data = new HashMap<>();
         data.put("email", user.getEmail());
         data.put("user", user);
         data.put("order", order);
         mailService.sendMailConfirmOrder(data);
         log.info("Email sent to: {}", user.getEmail());
+    }
 
-        return order;
+    // Generate order id has 8 digits
+    private Integer generateOrderId() {
+        Random random = new Random();
+        return random.nextInt(90000000) + 10000000;
     }
 
     public Order updateOrderByAdmin(Integer id, UpdateOrderRequest request) {
@@ -138,5 +189,12 @@ public class OrderService {
     public List<Order> getOrdersOfMovieByCurrentUser(Integer movieId) {
         User user = SecurityUtils.getCurrentUserLogin();
         return orderRepository.findByUser_IdAndMovie_Id(user.getId(), movieId);
+    }
+
+    public void updateOrderStatus(Integer orderId, OrderStatus status) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy đơn hàng với id " + orderId));
+        order.setStatus(status);
+        orderRepository.save(order);
     }
 }

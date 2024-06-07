@@ -52,7 +52,7 @@ const ConfirmForgotPassword = () => {
         toast.success('Đổi mật khẩu thành công. Vui lòng đăng nhập');
         setTimeout(() => {
           navigate("/dang-nhap")
-        }, 1500);
+        }, 1000);
       })
       .catch((error) => {
         console.log(error);

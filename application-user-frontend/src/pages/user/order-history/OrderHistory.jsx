@@ -1,36 +1,36 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import { useGetOrdersByCurrentUserQuery } from '../../../app/apis/order.api'
-import { formatCurrency, formatDate } from '../../../utils/functionUtils'
-import { Helmet } from 'react-helmet'
-import Loading from '../../../components/loading/Loading'
 import ErrorPage from '../../../components/error/ErrorPage'
+import Loading from '../../../components/loading/Loading'
+import { formatCurrency, formatDate } from '../../../utils/functionUtils'
 
 const parseOrderStatus = (status) => {
   switch (status) {
     case 'PENDING':
-      return <span className="badge text-bg-warning">Chờ xử lý</span>
+      return <span className="badge text-bg-warning fw-normal text-white">Chờ xử lý</span>
     case 'SUCCESS':
-      return <span className="badge text-bg-success">Thành công</span>
+      return <span className="badge text-bg-success fw-normal">Thành công</span>
     case 'CANCEL':
-      return <span className="badge text-bg-secondary">Đã hủy</span>
+      return <span className="badge text-bg-secondary fw-normal">Đã hủy</span>
     default:
-      return <span className="badge text-bg-primary">Không xác định</span>
+      return <span className="badge text-bg-primary fw-normal">Không xác định</span>
   }
 }
 
 const parsePaymentMethod = (paymentMethod) => {
   switch (paymentMethod) {
     case 'MOMO':
-      return <span className="badge text-bg-primary">Momo</span>
+      return <span className="badge text-bg-primary fw-normal">Momo</span>
     case 'ZALO_PAY':
-      return <span className="badge text-bg-primary">ZaloPay</span>
+      return <span className="badge text-bg-success fw-normal">ZaloPay</span>
     case 'VN_PAY':
-      return <span className="badge text-bg-primary">VNPay</span>
+      return <span className="badge text-bg-warning fw-normal text-white">VNPay</span>
     case 'BANK_TRANSFER':
-      return <span className="badge text-bg-primary">Chuyển khoản ngân hàng</span>
+      return <span className="badge text-bg-info fw-normal text-white">Chuyển khoản ngân hàng</span>
     default:
-      return <span className="badge text-bg-primary">Không xác định</span>
+      return <span className="badge text-bg-secondary fw-normal">Không xác định</span>
   }
 }
 

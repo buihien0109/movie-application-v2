@@ -42,7 +42,8 @@ public class HistoryService {
                 .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy tập phim với id: " + request.getEpisodeId()));
 
         // Kiểm tra xem thời lượng xem có hợp lệ không? Nếu không hợp lệ thì throw exception
-        if (request.getDuration() < 0 || request.getDuration() > episode.getVideo().getDuration()) {
+        int duration = (int) Math.floor(request.getDuration());
+        if (duration < 0 || duration > episode.getVideo().getDuration()) {
             throw new BadRequestException("Thời lượng xem không hợp lệ");
         }
 

@@ -10,6 +10,7 @@ import { updateAuth } from '../../../app/slices/auth.slice';
 import ErrorPage from '../../../components/error/ErrorPage';
 import Loading from '../../../components/loading/Loading';
 import ModalUpdatePassword from './components/ModalUpdatePassword';
+import { Helmet } from 'react-helmet';
 
 const schema = yup.object().shape({
     name: yup.string().required('Tên không được để trống'),
@@ -88,6 +89,10 @@ function Profile() {
 
     return (
         <>
+            <Helmet>
+                <title>Thông tin cá nhân</title>
+            </Helmet>
+
             <section className="py-4">
                 <div className="container">
                     <nav aria-label="breadcrumb">

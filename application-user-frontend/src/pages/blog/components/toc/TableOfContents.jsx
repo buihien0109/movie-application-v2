@@ -11,8 +11,8 @@ function TableOfContents() {
     useEffect(() => {
         const headingsArray = [];
 
-        const traverseHeadings = (elements, parentLevel = 0) => {
-            elements.forEach(heading => {
+        const traverseHeadings = (elements) => {
+            Array.from(elements).forEach(heading => {
                 const level = parseInt(heading.tagName.charAt(1));
                 const id = slugify(heading.textContent, { lower: true, trim: true })
                 heading.id = id;
@@ -24,10 +24,6 @@ function TableOfContents() {
                     level,
                     element: heading
                 });
-
-                if (heading.children.length > 0) {
-                    traverseHeadings(heading.children, level);
-                }
             });
         };
 

@@ -13,13 +13,12 @@ const PurchaseModal = ({ show, handleClose, movie }) => {
         createOrder({ movieId: movie.id, paymentMethod })
             .unwrap()
             .then((res) => {
-                toast.success("Tạo đơn hàng thành công");
-                handleClose();
+                window.location.href = res.url
             })
             .catch((error) => {
-                console.log(error);
-                toast.error(error.data.message)
-            });
+                console.log(error)
+                toast.error(error?.data?.message || "Đã có lỗi xảy ra, vui lòng thử lại sau")
+            })
     }
 
     return (
@@ -80,6 +79,26 @@ const PurchaseModal = ({ show, handleClose, movie }) => {
                                         onClick={() => {
                                             setShowBankTransferInfo(false)
                                             setPaymentMethod('MOMO')
+                                        }}
+                                    />
+                                </div>
+                            </li>
+                            <li className="payment-item">
+                                <div className="d-flex align-items-center">
+                                    <Form.Check
+                                        type="radio"
+                                        name="payment-method"
+                                        id="vnpay"
+                                        value="VN_PAY"
+                                        className='d-flex align-items-center justify-content-center'
+                                        label={
+                                            <span>
+                                                Thanh toán bằng VNPay <Image src="/public/logo-vnpay2.png" alt="logo vnpay" fluid />
+                                            </span>
+                                        }
+                                        onClick={() => {
+                                            setShowBankTransferInfo(false)
+                                            setPaymentMethod('VN_PAY')
                                         }}
                                     />
                                 </div>

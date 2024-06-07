@@ -6,6 +6,7 @@ import { useGetGenreBySlugQuery, useGetMoviesByGenreQuery } from '../../../app/a
 import ErrorPage from '../../../components/error/ErrorPage';
 import Loading from '../../../components/loading/Loading';
 import { parseMovieType } from '../../../utils/movieUtils';
+import { Helmet } from 'react-helmet';
 
 function TheLoai() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -43,6 +44,10 @@ function TheLoai() {
   const currentPage = data?.number + 1;
   return (
     <>
+      <Helmet>
+        <title>Thể loại: {genre?.name}</title>
+      </Helmet>
+
       <section className="py-4">
         <div className="container">
           <h3 className="mb-3">Thể loại : {genre?.name}</h3>

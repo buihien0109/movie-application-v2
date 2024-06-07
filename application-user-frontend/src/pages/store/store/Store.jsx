@@ -57,11 +57,13 @@ function Store() {
                                         </div>
                                         <p className="mt-2 mb-1 truncate-1">{movie.title}</p>
                                         <div className="d-flex align-items-center text-muted" style={{ fontSize: 14 }}>
-                                            <span>
-                                                <span className="fw-medium">{movie.rating}</span>
-                                                <span style={{ color: "#EDBB0E" }}><i className="fa fa-star"></i></span>
-                                            </span>
-                                            <span className="ms-2 fw-medium">{formatCurrency(movie.price)}đ</span>
+                                            {movie.rating && (
+                                                <span className="me-2">
+                                                    <span className="fw-medium">{movie.rating}</span>
+                                                    <span style={{ color: "#EDBB0E" }}><i className="fa fa-star"></i></span>
+                                                </span>
+                                            )}
+                                            <span className="fw-medium">{formatCurrency(movie.price)}đ</span>
                                         </div>
                                     </Link>
                                 </div>

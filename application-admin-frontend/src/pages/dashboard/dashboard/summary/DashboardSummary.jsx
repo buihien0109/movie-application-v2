@@ -24,7 +24,7 @@ function DashboardSummary({ latestOrdersCount, latestMoviesCount, latestUsersCou
             <Col span={6}>
                 <SummaryBox
                     title={`User mới/Tổng số user`}
-                    content={`${latestUsersCount.count}/${latestUsersCount.total}`}
+                    content={`${latestUsersCount?.count}/${latestUsersCount?.total}`}
                     className="warning"
                     link="/admin/users"
                 />
@@ -32,7 +32,7 @@ function DashboardSummary({ latestOrdersCount, latestMoviesCount, latestUsersCou
             <Col span={6}>
                 <SummaryBox
                     title={`Bài viết mới/Tổng số bài viết`}
-                    content={`${latestBlogsCount.count}/${latestBlogsCount.total}`}
+                    content={`${latestBlogsCount?.count}/${latestBlogsCount?.total}`}
                     className="danger"
                     link="/admin/blogs"
                 />

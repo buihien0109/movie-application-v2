@@ -24,10 +24,14 @@ export const orderApi = createApi({
                 body: data
             }),
         }),
+        getOrderById: builder.query({
+            query: (orderId) => `/orders/${orderId}`
+        }),
     }),
 });
 
 export const {
     useGetOrdersByCurrentUserQuery,
-    useCreateOrderMutation
+    useCreateOrderMutation,
+    useGetOrderByIdQuery
 } = orderApi;

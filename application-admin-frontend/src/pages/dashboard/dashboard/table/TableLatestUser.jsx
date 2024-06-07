@@ -9,7 +9,7 @@ const columns = [
         key: "name",
         render: (text, record, index) => {
             return (
-                <RouterLink to={`/admin/users/${record.id}/detail`}>
+                <RouterLink to={`/admin/users/${record?.id}/detail`}>
                     {text}
                 </RouterLink>
             );
@@ -38,7 +38,7 @@ function TableLatestUser({ data }) {
         <Table
             columns={columns}
             dataSource={data}
-            rowKey={(record) => record.movieId}
+            rowKey={(record) => record?.id}
             pagination={{ pageSize: 5, hideOnSinglePage: true }}
         />
     );

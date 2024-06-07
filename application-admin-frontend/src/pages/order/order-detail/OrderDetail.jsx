@@ -43,10 +43,12 @@ const parsePaymentMethod = (method) => {
     switch (method) {
         case "MOMO":
             return <Tag color="warning">MOMO</Tag>;
-        case "VNPAY":
+        case "VN_PAY":
             return <Tag color="success">VNPAY</Tag>;
+        case "ZALO_PAY":
+            return <Tag color="blue">ZALO PAY</Tag>;
         case "BANK_TRANSFER":
-            return <Tag color="blue">Chuyển khoản ngân hàng</Tag>;
+            return <Tag color="volcano">Chuyển khoản ngân hàng</Tag>;
         default:
             return <Tag color="default">Không xác định</Tag>;
     }

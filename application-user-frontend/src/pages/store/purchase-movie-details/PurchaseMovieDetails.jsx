@@ -251,17 +251,19 @@ function PurchaseMovieDetails() {
                         <div className="col-9">
                             <div className="movie-info text-white">
                                 <h2 className="mb-2">{movie.title}</h2>
-                                <div className="d-flex align-items-center mb-3">
-                                    <span className="rating-icon fs-4 text-yellow-300">
-                                        <i className="fa-solid fa-star"></i>
-                                    </span>
-                                    <span className="fs-3 fw-bold ms-2">{movie.rating}</span>
-                                </div>
+                                {movie.rating && (
+                                    <div className="d-flex align-items-center mb-3">
+                                        <span className="rating-icon fs-4 text-yellow-300">
+                                            <i className="fa-solid fa-star"></i>
+                                        </span>
+                                        <span className="fs-3 fw-bold ms-2">{movie.rating}</span>
+                                    </div>
+                                )}
                                 <div>
                                     <p className="fw-bold mb-1">Nội dung</p>
                                     <p className="text-small opacity-50" th:text="${film.description}">
-                                        {movie.description}
-                                        <a className="text-yellow-300 opacity-100" href="#">Xem thêm</a>
+                                        {movie.description}&nbsp;
+                                        <span className="text-yellow-300 opacity-100">Xem thêm</span>
                                     </p>
                                 </div>
                                 <div className="d-flex align-content-center">
@@ -314,7 +316,8 @@ function PurchaseMovieDetails() {
                                             id="btn-modal-purchase"
                                             onClick={handleShowModalPurchase}
                                         >
-                                            <span><i className="fa-solid fa-basket-shopping"></i></span> Mua phim:
+                                            <span className="me-1"><i className="fa-solid fa-basket-shopping"></i></span>
+                                            Mua phim:&nbsp;
                                             <span>{formatCurrency(movie.price)}đ</span>
                                         </button>
                                     )}
@@ -324,7 +327,7 @@ function PurchaseMovieDetails() {
                                             to={`/store/xem-phim/${movie.id}/${movie.slug}?tap=${movie.type == 'PHIM_BO' ? episodes[0].displayOrder : 'full'}`}
                                             className="d-inline-block btn btn-danger px-5 py-2 mt-3 rounded me-2 text-white"
                                         >
-                                            <span><i className="fa-solid fa-play"></i></span>
+                                            <span className="me-1"><i className="fa-solid fa-play"></i></span>
                                             Xem phim
                                         </Link>
                                     )}
@@ -335,7 +338,8 @@ function PurchaseMovieDetails() {
                                                 className="d-inline-block btn bg-dark px-5 py-2 mt-3 rounded text-white"
                                                 onClick={() => handleDeleteFromFavorite(movie.id)}
                                             >
-                                                <span><i className="fa-solid fa-trash-can"></i></span> Loại khỏi yêu thích
+                                                <span className="me-1"><i className="fa-solid fa-trash-can"></i></span>
+                                                Loại khỏi yêu thích
                                             </button>
                                         )}
                                         {isAuthenticated && !isFavorite && (
@@ -343,7 +347,8 @@ function PurchaseMovieDetails() {
                                                 className="d-inline-block btn bg-dark px-5 py-2 mt-3 rounded text-white"
                                                 onClick={() => handleAddToFavorite(movie.id)}
                                             >
-                                                <span><i className="fa-solid fa-heart"></i></span> Thêm vào yêu thích
+                                                <span className="me-1"><i className="fa-solid fa-heart"></i></span>
+                                                Thêm vào yêu thích
                                             </button>
                                         )}
                                     </div>
@@ -441,7 +446,7 @@ function PurchaseMovieDetails() {
                                                     </div>
                                                     <div className="rating-star">
                                                         <p className="mb-0 fw-medium">
-                                                            <span className="rating-icon"><i className="fa fa-star"></i></span>
+                                                            <span className="rating-icon me-1"><i className="fa fa-star"></i></span>
                                                             <span>{review.rating}/10 {parseReviewMessage(review.rating)}</span>
                                                         </p>
                                                     </div>

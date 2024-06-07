@@ -20,10 +20,12 @@ const parsePaymentMethod = (method) => {
     switch (method) {
         case "MOMO":
             return <Tag color="warning">MOMO</Tag>;
-        case "VNPAY":
+        case "VN_PAY":
             return <Tag color="success">VNPAY</Tag>;
+        case "ZALO_PAY":
+            return <Tag color="blue">ZALO PAY</Tag>;
         case "BANK_TRANSFER":
-            return <Tag color="blue">Chuyển khoản ngân hàng</Tag>;
+            return <Tag color="volcano">Chuyển khoản ngân hàng</Tag>;
         default:
             return <Tag color="default">Không xác định</Tag>;
     }
@@ -36,7 +38,7 @@ const columns = [
         key: "id",
         render: (text, record, index) => {
             return (
-                <RouterLink to={`/admin/orders/${record.id}/detail`}>
+                <RouterLink to={`/admin/orders/${record?.id}/detail`}>
                     {text}
                 </RouterLink>
             );
@@ -48,8 +50,8 @@ const columns = [
         key: "title",
         render: (text, record, index) => {
             return (
-                <RouterLink to={`/admin/movies/${text.id}/detail`}>
-                    {text.title}
+                <RouterLink to={`/admin/movies/${text?.id}/detail`}>
+                    {text?.title}
                 </RouterLink>
             )
         },
@@ -85,7 +87,7 @@ function TableLatestOrder({ data }) {
         <Table
             columns={columns}
             dataSource={data}
-            rowKey={(record) => record.id}
+            rowKey={(record) => record?.id}
             pagination={{ pageSize: 5, hideOnSinglePage: true }}
         />
     );

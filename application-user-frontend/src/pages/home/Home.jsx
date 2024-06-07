@@ -64,7 +64,7 @@ function Home() {
             </Helmet>
             <section className="py-4">
                 <div className="container">
-                    <h3 className="mb-3">Phim HOT</h3>
+                    <h4 className="mb-3">Phim HOT</h4>
                     <div className="movie-list owl-carousel position-relative">
                         <Swiper
                             slidesPerView={4}
@@ -121,10 +121,10 @@ function Home() {
                 </div>
             </section>
 
-            <section className="py-4">
+            <section className="py-4 bg-body-tertiary">
                 <div className="container">
                     <div className="d-flex justify-content-between align-items-center">
-                        <h3 className="mb-3">Phim lẻ mới cập nhật</h3>
+                        <h4 className="mb-3">Phim lẻ mới cập nhật</h4>
                         <Link to={"/phim-bo"} className="text-primary text-decoration-none">Xem thêm</Link>
                     </div>
                     <div className="row">
@@ -148,7 +148,7 @@ function Home() {
             <section className="py-4">
                 <div className="container">
                     <div className="d-flex justify-content-between align-items-center">
-                        <h3 className="mb-3">Phim bộ mới cập nhật</h3>
+                        <h4 className="mb-3">Phim bộ mới cập nhật</h4>
                         <Link to={"/phim-bo"} className="text-primary text-decoration-none">Xem thêm</Link>
                     </div>
                     <div className="row">
@@ -169,10 +169,10 @@ function Home() {
                 </div>
             </section>
 
-            <section className="py-4">
+            <section className="py-4 bg-body-tertiary">
                 <div className="container">
                     <div className="d-flex justify-content-between align-items-center">
-                        <h3 className="mb-3">Phim chiếu rạp mới cập nhật</h3>
+                        <h4 className="mb-3">Phim chiếu rạp mới cập nhật</h4>
                         <Link to={"/phim-bo"} className="text-primary text-decoration-none">Xem thêm</Link>
                     </div>
                     <div className="row">
@@ -196,7 +196,7 @@ function Home() {
             <section className="py-4">
                 <div className="container">
                     <div className="d-flex justify-content-between align-items-center">
-                        <h3 className="mb-3">Tin tức</h3>
+                        <h4 className="mb-3">Tin tức</h4>
                         <Link to={"/tin-tuc"} className="text-primary text-decoration-none">Xem thêm</Link>
                     </div>
                     <div className="row">

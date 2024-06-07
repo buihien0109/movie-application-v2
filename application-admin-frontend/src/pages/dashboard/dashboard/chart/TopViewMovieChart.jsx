@@ -34,7 +34,7 @@ export const options = {
 
 function TopViewMovieChart(props) {
   const data = {
-    labels: props.data.map((movie) => movie?.title.slice(0, 10) + '...'),
+    labels: props.data?.map((movie) => movie?.title.slice(0, 10) + '...'),
     datasets: [
       {
         label: 'Lượt xem',

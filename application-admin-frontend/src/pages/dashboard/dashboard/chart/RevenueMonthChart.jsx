@@ -36,7 +36,7 @@ export const options = {
 
 function RevenueMonthChart(props) {
   const data = {
-    labels: props.data.map((v) => `${v?.month}/${v?.year}`),
+    labels: props.data?.map((v) => `${v?.month}/${v?.year}`),
     datasets: [
       {
         label: 'Doanh thu',

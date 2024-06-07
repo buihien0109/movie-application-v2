@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom"
 import { countryApi } from "./app/apis/country.api"
 import { genreApi } from "./app/apis/genre.api"
 import Layout from "./components/layout/Layout"
+import PrivatePurchaseMovieStreaming from "./components/private/PrivatePurchaseMovieStreaming"
 import PrivateRoutes from "./components/private/PrivateRoutes"
 import RedirectRoutes from "./components/redirect/RedirectRoutes"
 import ConfirmForgotPassword from "./pages/auth/confirm-forgot-password/ConfirmForgotPassword"
@@ -21,6 +22,8 @@ import PhimChieuRap from "./pages/movie/phim-chieu-rap/PhimChieuRap"
 import PhimLe from "./pages/movie/phim-le/PhimLe"
 import QuocGia from "./pages/movie/quoc-gia/QuocGia"
 import TheLoai from "./pages/movie/the-loai/TheLoai"
+import ConfirmOrder from "./pages/payment/confirm-order/ConfirmOrder"
+import PaymentOrder from "./pages/payment/payment-order/PaymentOrder"
 import PurchaseMovieDetails from "./pages/store/purchase-movie-details/PurchaseMovieDetails"
 import PurchaseMovieStreaming from "./pages/store/purchase-movie-streaming/PurchaseMovieStreaming"
 import Store from "./pages/store/store/Store"
@@ -77,7 +80,13 @@ function App() {
           <Route path="lich-su-giao-dich" element={<OrderHistory />} />
           <Route path="danh-sach-phim-mua" element={<PurchasedMovie />} />
 
-          <Route path="store/xem-phim/:movieId/:movieSlug" element={<PurchaseMovieStreaming />} />
+          <Route path="thanh-toan-don-hang/:orderId" element={<PaymentOrder />} />
+          <Route path="xac-nhan-don-hang/:orderId" element={<ConfirmOrder />} />
+
+          <Route path="store/xem-phim/:movieId/:movieSlug" element={<PrivatePurchaseMovieStreaming />}>
+            <Route index element={<PurchaseMovieStreaming />} />
+          </Route>
+
         </Route>
       </Route>
     </Routes>

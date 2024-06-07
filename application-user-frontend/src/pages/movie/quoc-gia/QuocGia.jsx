@@ -6,6 +6,7 @@ import { useGetCountryBySlugQuery, useGetMoviesByCountryQuery } from '../../../a
 import ErrorPage from '../../../components/error/ErrorPage';
 import Loading from '../../../components/loading/Loading';
 import { parseMovieType } from '../../../utils/movieUtils';
+import { Helmet } from 'react-helmet';
 
 function QuocGia() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -42,6 +43,9 @@ function QuocGia() {
     const currentPage = data?.number + 1;
     return (
         <>
+            <Helmet>
+                <title>Quốc gia: {country?.name}</title>
+            </Helmet>
             <section className="py-4">
                 <div className="container">
                     <h3 className="mb-3">Quốc gia : {country?.name}</h3>
