@@ -37,7 +37,7 @@ public class OrderService {
     private final MovieRepository movieRepository;
     private final UserRepository userRepository;
     private final MailService mailService;
-    private final VNPayService vnpayService;
+    private final PaymentService paymentService;
 
     @Value("${app.backend.host}")
     private String backendHost;
@@ -92,33 +92,7 @@ public class OrderService {
                 .paymentMethod(request.getPaymentMethod())
                 .build();
         Order savedOrder = orderRepository.save(order);
-
-        if(order.getPaymentMethod().equals(OrderPaymentMethod.BANK_TRANSFER)) {
-            String returnUrl = "%s:%s/xac-nhan-don-hang/%s".formatted(frontendHost, frontendPort, savedOrder.getId());
-
-             // Gửi mail xác nhận đặt hàng
-             sendMailConfirmOrder(user, savedOrder);
-
-            return PaymentResponse.builder()
-                    .url(returnUrl)
-                    .build();
-        } else if (order.getPaymentMethod().equals(OrderPaymentMethod.VN_PAY)) {
-            String returnUrl = "%s:%s/api/orders/vnpay-payment".formatted(backendHost, backendExposePort);
-            log.info("Return URL: {}", returnUrl);
-            log.info("Order ID: {}", savedOrder.getId());
-            log.info("Start creating order with VNPay...");
-            String paymentUrl = vnpayService.createOrder(
-                    savedOrder.getAmount(),
-                    String.valueOf(savedOrder.getId()),
-                    returnUrl
-            );
-            log.info("Payment URL: {}", paymentUrl);
-            return PaymentResponse.builder()
-                    .url(paymentUrl)
-                    .build();
-        }
-
-        return null;
+        return paymentService.pay(savedOrder);
     }
 
     private void sendMailConfirmOrder(User user, Order order) {

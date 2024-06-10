@@ -6,6 +6,7 @@ import com.github.slugify.Slugify;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class BeanConfig {
@@ -27,5 +28,10 @@ public class BeanConfig {
                 .customReplacement("đ", "d")
                 .customReplacement("Đ", "D")
                 .build();
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

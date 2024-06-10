@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Col, Form, Image, Modal, Row } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import logoBankTransfer from "../../../../../public/bank-transfer.png";
+import logoMomo from "../../../../../public/logo-momo.svg";
+import logoVNPay from "../../../../../public/logo-vnpay2.png";
+import logoZaloPay from "../../../../../public/logo-zalopay.webp";
 import { useCreateOrderMutation } from '../../../../app/apis/order.api';
 import { formatCurrency } from '../../../../utils/functionUtils';
 
@@ -12,11 +16,6 @@ const PurchaseModal = ({ show, handleClose, movie }) => {
     const handleSubmitOrder = () => {
         if (!paymentMethod) {
             toast.error("Vui lòng chọn hình thức thanh toán")
-            return
-        }
-
-        if (paymentMethod === "MOMO" || paymentMethod === "ZALO_PAY") {
-            toast.warn("Chức năng thanh toán này đang được phát triển")
             return
         }
 
@@ -62,7 +61,7 @@ const PurchaseModal = ({ show, handleClose, movie }) => {
                                         className='d-flex align-items-center justify-content-center'
                                         label={
                                             <span>
-                                                Chuyển khoản trực tiếp <Image src="/public/bank-transfer.png" alt="logo bank transfer" fluid />
+                                                Chuyển khoản trực tiếp <Image src={logoBankTransfer} alt="logo bank transfer" fluid />
                                             </span>
                                         }
                                         defaultChecked
@@ -78,32 +77,12 @@ const PurchaseModal = ({ show, handleClose, movie }) => {
                                     <Form.Check
                                         type="radio"
                                         name="payment-method"
-                                        id="momo"
-                                        value="MOMO"
-                                        className='d-flex align-items-center justify-content-center'
-                                        label={
-                                            <span>
-                                                Thanh toán bằng Ví MoMo <Image src="/public/logo-momo.svg" alt="logo momo" fluid />
-                                            </span>
-                                        }
-                                        onClick={() => {
-                                            setShowBankTransferInfo(false)
-                                            setPaymentMethod('MOMO')
-                                        }}
-                                    />
-                                </div>
-                            </li>
-                            <li className="payment-item">
-                                <div className="d-flex align-items-center">
-                                    <Form.Check
-                                        type="radio"
-                                        name="payment-method"
                                         id="vnpay"
                                         value="VN_PAY"
                                         className='d-flex align-items-center justify-content-center'
                                         label={
                                             <span>
-                                                Thanh toán bằng VNPay <Image src="/public/logo-vnpay2.png" alt="logo vnpay" fluid />
+                                                Thanh toán bằng VNPay <Image src={logoVNPay} alt="logo vnpay" fluid />
                                             </span>
                                         }
                                         onClick={() => {
@@ -118,12 +97,32 @@ const PurchaseModal = ({ show, handleClose, movie }) => {
                                     <Form.Check
                                         type="radio"
                                         name="payment-method"
+                                        id="momo"
+                                        value="MOMO"
+                                        className='d-flex align-items-center justify-content-center'
+                                        label={
+                                            <span>
+                                                Thanh toán bằng Ví MoMo <Image src={logoMomo} alt="logo momo" fluid />
+                                            </span>
+                                        }
+                                        onClick={() => {
+                                            setShowBankTransferInfo(false)
+                                            setPaymentMethod('MOMO')
+                                        }}
+                                    />
+                                </div>
+                            </li>
+                            <li className="payment-item">
+                                <div className="d-flex align-items-center">
+                                    <Form.Check
+                                        type="radio"
+                                        name="payment-method"
                                         id="zalopay"
                                         value="ZALO_PAY"
                                         className='d-flex align-items-center justify-content-center'
                                         label={
                                             <span>
-                                                Thanh toán bằng Ví ZaloPay <Image src="/public/logo-zalopay.webp" alt="logo zalopay" fluid />
+                                                Thanh toán bằng Ví ZaloPay <Image src={logoZaloPay} alt="logo zalopay" fluid />
                                             </span>
                                         }
                                         onClick={() => {

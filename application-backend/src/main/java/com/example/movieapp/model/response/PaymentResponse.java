@@ -3,6 +3,7 @@ package com.example.movieapp.model.response;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+@ToString
 @Builder
 @Getter
 @Setter

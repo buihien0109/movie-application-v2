@@ -15,6 +15,7 @@ import { viewLogsApi } from "./apis/viewLogs.api";
 import authReducer from "./slices/auth.slice";
 import countryReducer from "./slices/country.slice";
 import genreReducer from "./slices/genre.slice";
+import { checkStatusMiddleware } from "./middlewares/middlewares";
 
 const store = configureStore({
     reducer: {
@@ -49,7 +50,8 @@ const store = configureStore({
             userApi.middleware,
             reviewApi.middleware,
             episodeApi.middleware,
-            viewLogsApi.middleware
+            viewLogsApi.middleware,
+            checkStatusMiddleware
         ),
 });
 

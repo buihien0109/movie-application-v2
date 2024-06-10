@@ -1,47 +1,51 @@
-package com.example.movieapp.service;
+package com.example.movieapp.payment.impl;
 
-import com.example.movieapp.config.payment.vnpay.VNPayConfig;
+import com.example.movieapp.entity.Order;
+import com.example.movieapp.model.response.PaymentResponse;
+import com.example.movieapp.payment.PaymentStrategy;
+import com.example.movieapp.payment.config.VnPayConfig;
+import com.example.movieapp.payment.utils.vnpay.VnPayUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-// Thông tin chi tiết: https://sandbox.vnpayment.vn/apis/docs/thanh-toan-pay/pay.html
-// Xem các thông tin giao dịch: https://sandbox.vnpayment.vn/merchantv2/Home/Dashboard.htm
 @Slf4j
-@Service
+@Component
 @RequiredArgsConstructor
-public class VNPayService {
+public class VnPayPayment implements PaymentStrategy {
+    private final VnPayConfig config;
 
     @Value("${app.vnp.ip.address}")
     private String vnpIpAddress;
 
-    public String createOrder(int total, String orderInfo, String urlReturn) {
-        Map<String, String> vnpParams = new HashMap<>();
-        initializeOrderParams(vnpParams, total, orderInfo, urlReturn);
-        return buildPaymentUrl(vnpParams);
-    }
+    @Value("${app.backend.host}")
+    private String backendHost;
 
-    private void initializeOrderParams(Map<String, String> params, int total, String orderInfo, String urlReturn) {
-        log.info("Creating order with total: {}, orderInfo: {}, urlReturn: {}", total, orderInfo, urlReturn);
+    @Value("${app.backend.expose_port}")
+    private String backendExposePort;
+
+    private void initializeOrderParams(Map<String, String> params, Order order) {
+        log.info("Creating order with order: {}", order);
         log.info("VNPay IP Address: {}", vnpIpAddress);
+        String returnUrl = "%s:%s/api/public/payments/vnpay/callback".formatted(backendHost, backendExposePort);
 
         params.put("vnp_Version", "2.1.0");
         params.put("vnp_Command", "pay");
-        params.put("vnp_TmnCode", VNPayConfig.vnp_TmnCode);
-        params.put("vnp_Amount", String.valueOf(total * 100));
+        params.put("vnp_TmnCode", config.getVnp_TmnCode());
+        params.put("vnp_Amount", String.valueOf(order.getAmount() * 100));
         params.put("vnp_CurrCode", "VND");
-        params.put("vnp_TxnRef", VNPayConfig.getRandomNumber(8));
-        params.put("vnp_OrderInfo", orderInfo);
+        params.put("vnp_TxnRef", VnPayUtil.getRandomNumber(8));
+        params.put("vnp_OrderInfo", String.valueOf(order.getId()));
         params.put("vnp_OrderType", "250000");
         params.put("vnp_Locale", "vn");
-        params.put("vnp_ReturnUrl", urlReturn + VNPayConfig.vnp_Returnurl);
+        params.put("vnp_ReturnUrl", returnUrl);
         params.put("vnp_IpAddr", vnpIpAddress);
 
         TimeZone timeZone = TimeZone.getTimeZone("GMT+7");
@@ -69,8 +73,8 @@ public class VNPayService {
         }
 
         String queryUrl = query.toString();
-        String vnpSecureHash = VNPayConfig.hmacSHA512(VNPayConfig.vnp_HashSecret, hashData.toString());
-        return VNPayConfig.vnp_PayUrl + "?" + queryUrl + "&vnp_SecureHash=" + vnpSecureHash;
+        String vnpSecureHash = VnPayUtil.hmacSHA512(config.getVnp_HashSecret(), hashData.toString());
+        return config.getVnp_PayUrl() + "?" + queryUrl + "&vnp_SecureHash=" + vnpSecureHash;
     }
 
     private void appendQueryParameters(StringBuilder hashData, StringBuilder query, String fieldName, String fieldValue, boolean appendAmpersand) {
@@ -104,11 +108,24 @@ public class VNPayService {
         fields.remove("vnp_SecureHashType");
         fields.remove("vnp_SecureHash");
 
-        String signValue = VNPayConfig.hashAllFields(fields);
+        String signValue = VnPayUtil.hashAllFields(fields,  config.getVnp_HashSecret());
         if (signValue.equals(vnpSecureHash)) {
             return "00".equals(request.getParameter("vnp_TransactionStatus")) ? 1 : 0;
         } else {
             return -1;
         }
+    }
+
+    @Override
+    public PaymentResponse pay(Order order) {
+        Map<String, String> vnpParams = new HashMap<>();
+        initializeOrderParams(vnpParams, order);
+
+        String url = buildPaymentUrl(vnpParams);
+        log.info("Payment URL: {}", url);
+
+        return PaymentResponse.builder()
+                .url(url)
+                .build();
     }
 }
