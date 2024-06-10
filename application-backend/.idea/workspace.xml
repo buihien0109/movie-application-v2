@@ -5,38 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad7e8e0-c7f5-43e4-a009-7a052645546a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/PaymentStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/callback/MomoCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/callback/VnPayCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/callback/ZaloPayCallback.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/config/MomoConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/config/VnPayConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/config/ZaloPayConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/impl/BankTransferPayment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/impl/MomoPayment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/impl/VnPayPayment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/impl/ZaloPayPayment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/utils/momo/MomoUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/utils/zalopay/ZaloPayUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/service/PaymentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/movieapp/PaymentTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/movieapp/config/BeanConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/config/BeanConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/movieapp/config/payment/vnpay/VNPayConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/payment/utils/vnpay/VnPayUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/movieapp/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/movieapp/model/response/PaymentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/model/response/PaymentResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/movieapp/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/movieapp/service/VNPayService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/movieapp/config/BeanConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/movieapp/config/BeanConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/movieapp/controller/ViewMovieLogControlller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/movieapp/controller/ViewMovieLogControlller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/movieapp/model/response/PaymentResponse$PaymentResponseBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/movieapp/model/response/PaymentResponse$PaymentResponseBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/movieapp/model/response/PaymentResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/movieapp/model/response/PaymentResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/movieapp/repository/HistoryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/movieapp/repository/HistoryRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/movieapp/service/HistoryService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/movieapp/service/HistoryService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/movieapp/service/OrderService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/movieapp/service/OrderService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/movieapp/utils/FileUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/movieapp/utils/FileUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/pages/store/purchase-movie-details/components/PurchaseModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/pages/store/purchase-movie-details/components/PurchaseModal.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +157,7 @@
       <workItem from="1717836231626" duration="46000" />
       <workItem from="1717836306773" duration="6111000" />
       <workItem from="1717858772473" duration="142000" />
-      <workItem from="1717921701301" duration="10592000" />
+      <workItem from="1717921701301" duration="11969000" />
     </task>
     <servers />
   </component>

@@ -94,10 +94,10 @@ function Header() {
                                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                 {auth?.role === "ADMIN" && (
                                                     <li>
-                                                        <Link to={"/admin/dashboard"} className="dropdown-item text-gray-600 py-2">
+                                                        <a href="/admin/dashboard" className="dropdown-item text-gray-600 py-2">
                                                             <span style={{ width: 20 }} className="d-inline-block"><i className="fa-solid fa-user-tie"></i></span>
                                                             <span className="ps-1 text-small">Trang quản trị</span>
-                                                        </Link>
+                                                        </a>
                                                     </li>
                                                 )}
                                                 <li>
