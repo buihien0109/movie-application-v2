@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import logo from "../../../public/logo.png";
+import { useLogoutApiMutation } from '../../app/apis/auth2.api';
 import { logout } from '../../app/slices/auth.slice';
 
 function Header() {
@@ -10,10 +11,19 @@ function Header() {
     const { auth, isAuthenticated } = useSelector(state => state.auth)
     const countries = useSelector(state => state.countries)
     const genres = useSelector(state => state.genres)
+    const [logoutApi, { isLoading }] = useLogoutApiMutation()
 
     const handleLogout = () => {
-        dispatch(logout())
-        toast.success("Đăng xuất thành công")
+        logoutApi().unwrap()
+            .then(() => {
+                dispatch(logout())
+                toast.success("Đăng xuất thành công")
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error(error.data.message)
+            })
+
     }
     return (
         <header className="bg-dark header">

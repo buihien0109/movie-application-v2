@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useAddHistoryMovieMutation, useGetHistoryMovieQuery } from '../../../../app/apis/history.api';
 import { useCreateViewMovieLogMutation } from '../../../../app/apis/viewLogs.api';
+import { LOCAL_STORAGE_HISTORY_KEY } from '../../../../data/constants';
 
 const VideoPlayer = ({ movie, currentEpisode, isAuthenticated }) => {
     const videoRef = useRef(null);
@@ -20,7 +21,7 @@ const VideoPlayer = ({ movie, currentEpisode, isAuthenticated }) => {
     }, [currentEpisode]);
 
     const updateWatchHistoryLocal = (currentTime) => {
-        let watchHistory = JSON.parse(localStorage.getItem('watchHistory')) || [];
+        let watchHistory = JSON.parse(localStorage.getItem(LOCAL_STORAGE_HISTORY_KEY)) || [];
 
         const currentWatchData = {
             movieId: movie.id,
@@ -35,7 +36,7 @@ const VideoPlayer = ({ movie, currentEpisode, isAuthenticated }) => {
             watchHistory.push(currentWatchData);
         }
 
-        localStorage.setItem('watchHistory', JSON.stringify(watchHistory));
+        localStorage.setItem(LOCAL_STORAGE_HISTORY_KEY, JSON.stringify(watchHistory));
     };
 
     const handlePause = () => {
@@ -79,7 +80,7 @@ const VideoPlayer = ({ movie, currentEpisode, isAuthenticated }) => {
                 setVideoTime(0);
             }
         } else {
-            const localWatchHistory = JSON.parse(localStorage.getItem('watchHistory')) || [];
+            const localWatchHistory = JSON.parse(localStorage.getItem(LOCAL_STORAGE_HISTORY_KEY)) || [];
             const userWatchData = localWatchHistory.find(data => data.movieId === movie.id && data.episodeId === currentEpisodeRef.current.id);
             if (userWatchData) {
                 const { duration } = userWatchData;

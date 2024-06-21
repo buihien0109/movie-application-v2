@@ -1,9 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_DOMAIN_PUBLIC, DOMAIN } from "../../data/constants";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { DOMAIN } from "../../data/constants";
+import { baseQueryPublic } from "./baseQuery";
 
 export const blogApi = createApi({
     reducerPath: "blogApi",
-    baseQuery: fetchBaseQuery({ baseUrl: API_DOMAIN_PUBLIC }),
+    baseQuery: baseQueryPublic,
     endpoints: (builder) => ({
         getLatestBlogs: builder.query({
             query: ({ limit }) => {

@@ -1,9 +1,9 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_DOMAIN_PUBLIC } from "../../data/constants";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseQueryPublic } from "./baseQuery";
 
 export const viewLogsApi = createApi({
     reducerPath: "viewLogsApi",
-    baseQuery: fetchBaseQuery({ baseUrl: API_DOMAIN_PUBLIC }),
+    baseQuery: baseQueryPublic,
     endpoints: (builder) => ({
         createViewMovieLog: builder.mutation({
             query: (movieId) => ({

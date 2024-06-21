@@ -1,18 +1,9 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_DOMAIN } from "../../data/constants";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseQueryAuth } from "./baseQuery";
 
 export const orderApi = createApi({
     reducerPath: "orderApi",
-    baseQuery: fetchBaseQuery({
-        baseUrl: API_DOMAIN,
-        prepareHeaders: (headers, { getState }) => {
-            const token = getState().auth.accessToken;
-            if (token) {
-                headers.set('Authorization', `Bearer ${token}`);
-            }
-            return headers;
-        },
-    }),
+    baseQuery: baseQueryAuth,
     endpoints: (builder) => ({
         getOrdersByCurrentUser: builder.query({
             query: () => `/orders/history`

@@ -22,6 +22,15 @@ const authSlice = createSlice({
             setDataToLocalStorage(LOCAL_STORAGE_AUTH_KEY, defaultState);
             return defaultState;
         },
+        updateAuth: (state, action) => {
+            state.auth = { ...state.auth, ...action.payload };
+            setDataToLocalStorage(LOCAL_STORAGE_AUTH_KEY, state);
+        },
+        setToken: (state, action) => {
+            const { accessToken } = action.payload;
+            state.accessToken = accessToken;
+            setDataToLocalStorage(LOCAL_STORAGE_AUTH_KEY, state);
+        },
         updateInfo: (state, action) => {
             state.auth = action.payload;
             setDataToLocalStorage(LOCAL_STORAGE_AUTH_KEY, state);
@@ -42,6 +51,6 @@ const authSlice = createSlice({
     }
 });
 
-export const { logout, updateInfo } = authSlice.actions
+export const { logout, updateAuth, setToken, updateInfo } = authSlice.actions
 
 export default authSlice.reducer

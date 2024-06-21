@@ -1,17 +1,14 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_DOMAIN, API_DOMAIN_AUTH_PUBLIC } from "../../data/constants";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { API_DOMAIN } from "../../data/constants";
+import { baseQueryPublic } from "./baseQuery";
 
-// Define a service using a base URL and expected endpoints
-const ENDPOINT = API_DOMAIN_AUTH_PUBLIC;
 export const authApi = createApi({
     reducerPath: "authApi",
-    baseQuery: fetchBaseQuery(
-        { baseUrl: ENDPOINT }
-    ),
+    baseQuery: baseQueryPublic,
     endpoints: (builder) => ({
         login: builder.mutation({
             query: (credentials) => ({
-                url: "/login",
+                url: "/auth/login",
                 method: "POST",
                 body: credentials,
             }),
@@ -25,9 +22,19 @@ export const authApi = createApi({
                 }
             }
         }),
+        refreshToken: builder.mutation({
+            query: (refreshToken) => ({
+                url: "/auth/refresh-token",
+                method: "POST",
+                body: {
+                    refreshToken,
+                },
+            }),
+        }),
     }),
 });
 
 export const {
-    useLoginMutation
+    useLoginMutation,
+    useRefreshTokenMutation,
 } = authApi;

@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { authApi } from "./apis/auth.api";
+import { auth2Api } from "./apis/auth2.api";
 import { blogApi } from "./apis/blog.api";
 import { countryApi } from "./apis/country.api";
 import { episodeApi } from "./apis/episode.api";
@@ -12,14 +13,15 @@ import { purchaseApi } from "./apis/purchase.api";
 import { reviewApi } from "./apis/review.api";
 import { userApi } from "./apis/user.api";
 import { viewLogsApi } from "./apis/viewLogs.api";
+import { checkStatusMiddleware } from "./middlewares/tokenExpirationMiddleware";
 import authReducer from "./slices/auth.slice";
 import countryReducer from "./slices/country.slice";
 import genreReducer from "./slices/genre.slice";
-import { checkStatusMiddleware } from "./middlewares/middlewares";
 
 const store = configureStore({
     reducer: {
         [authApi.reducerPath]: authApi.reducer,
+        [auth2Api.reducerPath]: authApi.reducer,
         [movieApi.reducerPath]: movieApi.reducer,
         [blogApi.reducerPath]: blogApi.reducer,
         [countryApi.reducerPath]: countryApi.reducer,
@@ -39,6 +41,7 @@ const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(
             authApi.middleware,
+            auth2Api.middleware,
             movieApi.middleware,
             blogApi.middleware,
             countryApi.middleware,

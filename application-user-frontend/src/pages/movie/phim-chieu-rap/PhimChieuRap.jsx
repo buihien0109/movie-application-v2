@@ -11,8 +11,8 @@ function PhimChieuRap() {
   const [searchParams, setSearchParams] = useSearchParams();
   let page = searchParams.get('page') || 1;
   let limit = searchParams.get('limit') || 18;
-  const { data, isLoading, isError } = useGetMoviesByTypeQuery({
-    type: 'PHIM_CHIEU_RAP ',
+  const { data, isLoading, isError, error } = useGetMoviesByTypeQuery({
+    type: 'PHIM_CHIEU_RAP',
     page: page,
     limit: limit
   }, { refetchOnMountOrArgChange: true })
@@ -22,7 +22,7 @@ function PhimChieuRap() {
   }
 
   if (isError) {
-    return <ErrorPage />
+    return <ErrorPage error={error} />
   }
 
   const handlePageChange = (page) => {

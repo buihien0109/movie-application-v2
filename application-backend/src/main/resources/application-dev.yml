@@ -1,0 +1,58 @@
+app:
+    backend:
+        expose_port: 8080
+        host: http://localhost
+        port: 8080
+    frontend:
+        host: http://localhost
+        port: 3000
+    vnp:
+        ip:
+            address: 127.0.0.1
+application:
+    security:
+        jwt:
+            expiration: 2592000000
+            secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+        refresh-token:
+            expiration: 31536000000
+server:
+    port: 8080
+spring:
+    datasource:
+        hikari:
+            connection-timeout: 30000
+            idle-timeout: 600000
+            max-lifetime: 1800000
+            maximum-pool-size: 10
+            minimum-idle: 5
+        password: 123
+        url: jdbc:mysql://localhost:3306/db-movie?createDatabaseIfNotExist=true
+        username: root
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+        show-sql: true
+    mail:
+        host: localhost
+        username: admin@hcinema.com
+        password: 123
+        port: 1025
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    connectiontimeout: 5000
+                    ssl:
+                        trust: '*'
+                    starttls:
+                        enable: true
+                    timeout: 3000
+                    writetimeout: 5000
+    servlet:
+        multipart:
+            max-file-size: 100MB
+            max-request-size: 100MB

@@ -1,0 +1,53 @@
+app:
+    backend:
+        expose_port: ${SPRING_APP_BACKEND_EXPOSE_PORT}
+        host: ${SPRING_APP_BACKEND_HOST}
+        port: ${SPRING_APP_BACKEND_PORT}
+    frontend:
+        host: ${SPRING_APP_FRONTEND_HOST}
+        port: ${SPRING_APP_FRONTEND_PORT}
+    vnp:
+        ip:
+            address: ${SPRING_APP_VNP_IP_ADDRESS}
+application:
+    security:
+        jwt:
+            expiration: 2592000000
+            secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+        refresh-token:
+            expiration: 31536000000
+server:
+    port: ${SPRING_APP_BACKEND_PORT}
+spring:
+    datasource:
+        hikari:
+            connection-timeout: 30000
+            idle-timeout: 600000
+            max-lifetime: 1800000
+            maximum-pool-size: 10
+            minimum-idle: 5
+        password: ${SPRING_DATASOURCE_PASSWORD}
+        url: ${SPRING_DATASOURCE_URL}
+        username: ${SPRING_DATASOURCE_USERNAME}
+    jpa:
+        hibernate:
+            ddl-auto: none
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+        show-sql: true
+    mail:
+        host: smtp.gmail.com
+        username: ${SPRING_MAIL_USERNAME}
+        password: ${SPRING_MAIL_PASSWORD}
+        port: 587
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+    servlet:
+        multipart:
+            max-file-size: 100MB
+            max-request-size: 100MB

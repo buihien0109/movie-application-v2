@@ -1,15 +1,24 @@
 import { Avatar, Dropdown, Flex, message } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLogoutApiMutation } from "../../app/services/auth2.service";
 import { logout } from "../../app/slices/auth.slice";
 
 function AppLayoutHeader() {
     const { auth } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
+    const [logoutApi, { isLoading }] = useLogoutApiMutation();
 
     const handleLogout = () => {
-        dispatch(logout());
-        message.success("Đăng xuất thành công");
+        logoutApi()
+            .unwrap()
+            .then((data) => {
+                dispatch(logout());
+                message.success("Đăng xuất thành công");
+            })
+            .catch((error) => {
+                message.error(error.data.message);
+            });
     };
 
     const items = [
@@ -35,6 +44,7 @@ function AppLayoutHeader() {
                 }}
                 placement="bottomLeft"
                 trigger={["click"]}
+                disabled={isLoading}
             >
                 <Avatar
                     src={<img src={auth.avatar} alt="avatar" />}

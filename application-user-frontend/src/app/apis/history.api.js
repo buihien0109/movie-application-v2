@@ -1,18 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_DOMAIN, DOMAIN } from "../../data/constants";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { DOMAIN } from "../../data/constants";
+import { baseQueryAuth } from "./baseQuery";
 
 export const historyApi = createApi({
     reducerPath: "historyApi",
-    baseQuery: fetchBaseQuery({
-        baseUrl: API_DOMAIN,
-        prepareHeaders: (headers, { getState }) => {
-            const token = getState().auth.accessToken;
-            if (token) {
-                headers.set('Authorization', `Bearer ${token}`);
-            }
-            return headers;
-        },
-    }),
+    baseQuery: baseQueryAuth,
     endpoints: (builder) => ({
         getHistoryMovie: builder.query({
             query: ({ movieId, episodeId }) => `/histories/movies/${movieId}/episodes/${episodeId}`

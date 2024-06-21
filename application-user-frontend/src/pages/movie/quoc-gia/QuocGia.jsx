@@ -1,12 +1,12 @@
 import Pagination from 'rc-pagination';
 import 'rc-pagination/assets/index.css';
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { useGetCountryBySlugQuery, useGetMoviesByCountryQuery } from '../../../app/apis/country.api';
 import ErrorPage from '../../../components/error/ErrorPage';
 import Loading from '../../../components/loading/Loading';
 import { parseMovieType } from '../../../utils/movieUtils';
-import { Helmet } from 'react-helmet';
 
 function QuocGia() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -16,7 +16,7 @@ function QuocGia() {
     const {
         data,
         isLoading: isLoadingMovies,
-        isError: isErrorMovies
+        isError: isErrorMovies,
     } = useGetMoviesByCountryQuery({
         slug: countrySlug,
         page: page,

@@ -1,22 +1,9 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_DOMAIN_ADMIN } from "../../data/constants";
-
-// Define a service using a base URL and expected endpoints
-const ENDPOINT = API_DOMAIN_ADMIN;
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { baseQuery } from "./baseQuery";
 
 export const dashboardApi = createApi({
     reducerPath: "dashboardApi",
-    baseQuery: fetchBaseQuery({
-        baseUrl: ENDPOINT,
-        prepareHeaders: (headers, { getState }) => {
-            const token = getState().auth.accessToken;
-            if (token) {
-                headers.set("Authorization", `Bearer ${token}`);
-            }
-
-            return headers;
-        },
-    }),
+    baseQuery: baseQuery,
     endpoints: (builder) => ({
         getDashboardData: builder.query({
             query: () => "/dashboard"
@@ -25,14 +12,6 @@ export const dashboardApi = createApi({
 
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const {
-    useGetDashboardDataQuery,
-    useGetRevenueByMovieQuery,
-    useGetRevenueByCinemaQuery,
-    useLazyGetRevenueByCinemaQuery,
-    useLazyGetRevenueByMovieQuery,
-    useLazyExportRevenueByCinemaQuery,
-    useLazyExportRevenueByMovieQuery
+    useGetDashboardDataQuery
 } = dashboardApi;

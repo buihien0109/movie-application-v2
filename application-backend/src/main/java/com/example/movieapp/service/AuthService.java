@@ -1,24 +1,32 @@
 package com.example.movieapp.service;
 
+import com.example.movieapp.entity.RefreshToken;
 import com.example.movieapp.entity.TokenConfirm;
 import com.example.movieapp.entity.User;
 import com.example.movieapp.exception.BadRequestException;
 import com.example.movieapp.exception.ResourceNotFoundException;
-import com.example.movieapp.model.dto.UserDto;
 import com.example.movieapp.model.enums.TokenType;
 import com.example.movieapp.model.enums.UserRole;
 import com.example.movieapp.model.mapper.UserMapper;
 import com.example.movieapp.model.request.LoginRequest;
+import com.example.movieapp.model.request.RefreshTokenRequest;
 import com.example.movieapp.model.request.RegisterRequest;
 import com.example.movieapp.model.request.ResetPasswordRequest;
 import com.example.movieapp.model.response.AuthResponse;
 import com.example.movieapp.model.response.VerifyTokenResponse;
+import com.example.movieapp.repository.RefreshTokenRepository;
 import com.example.movieapp.repository.TokenConfirmRepository;
 import com.example.movieapp.repository.UserRepository;
+import com.example.movieapp.security.CustomUserDetails;
 import com.example.movieapp.security.JwtUtils;
+import com.example.movieapp.security.SecurityUtils;
 import com.example.movieapp.utils.StringUtils;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,9 +34,12 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.*;
 
@@ -41,9 +52,13 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final TokenConfirmRepository tokenConfirmRepository;
+    private final RefreshTokenRepository refreshTokenRepository;
     private final UserMapper userMapper;
     private final JwtUtils jwtUtils;
     private final MailService mailService;
+
+    @Value("${application.security.refresh-token.expiration}")
+    private long refreshTokenExpiration;
 
     public AuthResponse login(LoginRequest request) throws AuthenticationException {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
@@ -54,21 +69,56 @@ public class AuthService {
         Authentication authentication = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Tạo token
         UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmail());
         String tokenJwt = jwtUtils.generateToken(userDetails);
 
-        // TODO: Tạo refresh token
-
-        // Thông tin trả về cho Client
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new ResourceNotFoundException("Không tìm thấy user có email = " + request.getEmail()));
-        UserDto userDto = userMapper.toUserDto(user);
+        String refreshToken = UUID.randomUUID().toString();
+        RefreshToken refreshTokenEntity = RefreshToken.builder()
+                .token(refreshToken)
+                .expiredAt(new Date(System.currentTimeMillis() + refreshTokenExpiration))
+                .user(user)
+                .build();
+        refreshTokenRepository.save(refreshTokenEntity);
 
         return AuthResponse.builder()
-                .user(userDto)
+                .user(userMapper.toUserDto(user))
                 .accessToken(tokenJwt)
-                .refreshToken(null)
+                .refreshToken(refreshToken)
+                .isAuthenticated(true)
+                .build();
+    }
+
+    @Transactional
+    public void logout() {
+        User user = SecurityUtils.getCurrentUserLogin();
+        if (user == null) {
+            throw new ResourceNotFoundException("Tài khoản không tồn tại");
+        }
+        refreshTokenRepository.logOut(user.getId());
+        SecurityContextHolder.clearContext();
+    }
+
+    public AuthResponse refreshToken(RefreshTokenRequest request) {
+        log.info("Refresh Token");
+        RefreshToken refreshToken = refreshTokenRepository.findByTokenAndInvalidated(request.getRefreshToken(), false)
+                .orElseThrow(() -> new BadRequestException("Refresh token không hợp lệ"));
+
+        if (refreshToken.getExpiredAt().before(new Date())) {
+            refreshToken.setInvalidated(true);
+            refreshTokenRepository.save(refreshToken);
+            throw new BadRequestException("Refresh token đã hết hạn");
+        }
+
+        User user = refreshToken.getUser();
+        CustomUserDetails userDetails = new CustomUserDetails(user);
+
+        String tokenJwt = jwtUtils.generateToken(userDetails);
+        return AuthResponse.builder()
+                .user(userMapper.toUserDto(user))
+                .accessToken(tokenJwt)
+                .refreshToken(request.getRefreshToken())
                 .isAuthenticated(true)
                 .build();
     }
@@ -249,4 +299,5 @@ public class AuthService {
 
         return response;
     }
+
 }

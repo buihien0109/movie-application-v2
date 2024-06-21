@@ -1,9 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_DOMAIN_PUBLIC, DOMAIN } from "../../data/constants";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { DOMAIN } from "../../data/constants";
+import { baseQueryPublic } from "./baseQuery";
 
 export const movieApi = createApi({
     reducerPath: "movieApi",
-    baseQuery: fetchBaseQuery({ baseUrl: API_DOMAIN_PUBLIC }),
+    baseQuery: baseQueryPublic,
     endpoints: (builder) => ({
         getHotMovie: builder.query({
             query: ({ limit }) => {

@@ -1,18 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { API_DOMAIN, DOMAIN } from "../../data/constants";
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { DOMAIN } from "../../data/constants";
+import { baseQueryAuth } from "./baseQuery";
 
 export const favoriteApi = createApi({
     reducerPath: "favoriteApi",
-    baseQuery: fetchBaseQuery({
-        baseUrl: API_DOMAIN,
-        prepareHeaders: (headers, { getState }) => {
-            const token = getState().auth.accessToken;
-            if (token) {
-                headers.set('Authorization', `Bearer ${token}`);
-            }
-            return headers;
-        },
-    }),
+    baseQuery: baseQueryAuth,
     endpoints: (builder) => ({
         getFavoritesByCurrentUser: builder.query({
             query: ({ page, limit }) => {
