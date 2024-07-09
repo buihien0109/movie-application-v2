@@ -5,72 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ad7e8e0-c7f5-43e4-a009-7a052645546a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/entity/RefreshToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/model/request/RefreshTokenRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/repository/RefreshTokenRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application-prod.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/middlewares/middlewares.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/actors.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/actors.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/auth.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/blogs.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/blogs.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/countries.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/countries.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/coupons.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/coupons.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/dashboard.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/dashboard.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/directors.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/directors.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/episode.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/episode.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/genres.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/genres.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/images.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/images.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/movies.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/movies.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/orders.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/orders.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/reviews.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/reviews.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/users.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/services/users.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/slices/auth.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/app/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/app/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/components/layout/AppLayoutHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/components/layout/AppLayoutHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-admin-frontend/src/data/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-admin-frontend/src/data/constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/movieapp/controller/AuthControlller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/controller/AuthControlller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/movieapp/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/movieapp/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/image/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-prod.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/movieapp/controller/AuthControlller.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/movieapp/controller/AuthControlller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/movieapp/service/AuthService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/movieapp/service/AuthService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/image/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/auth.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/auth.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/blog.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/blog.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/country.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/country.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/episode.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/episode.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/favorite.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/favorite.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/genre.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/genre.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/history.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/history.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/movie.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/movie.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/order.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/order.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/purchase.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/purchase.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/review.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/review.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/user.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/user.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/viewLogs.api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/apis/viewLogs.api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/middlewares/middlewares.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/slices/auth.slice.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/slices/auth.slice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/app/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/app/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/components/error/ErrorPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/components/error/ErrorPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/components/header/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/components/header/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/data/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/data/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/pages/movie/movie-streaming/components/VideoPlayer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/pages/movie/movie-streaming/components/VideoPlayer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/pages/movie/phim-bo/PhimBo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/pages/movie/phim-bo/PhimBo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/pages/movie/phim-chieu-rap/PhimChieuRap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/pages/movie/phim-chieu-rap/PhimChieuRap.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/pages/movie/phim-le/PhimLe.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/pages/movie/phim-le/PhimLe.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application-user-frontend/src/pages/movie/quoc-gia/QuocGia.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../application-user-frontend/src/pages/movie/quoc-gia/QuocGia.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,8 +144,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -231,6 +166,8 @@
       <workItem from="1717921701301" duration="12756000" />
       <workItem from="1718117692635" duration="33469000" />
       <workItem from="1718347567784" duration="8642000" />
+      <workItem from="1719492548508" duration="3499000" />
+      <workItem from="1719713209012" duration="1663000" />
     </task>
     <servers />
   </component>
